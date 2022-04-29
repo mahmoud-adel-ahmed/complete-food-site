@@ -4,6 +4,9 @@ let navbar = document.querySelector(".navbar");
 menu_btn.addEventListener("click", () => {
   menu_btn.classList.toggle("fa-times");
   navbar.classList.toggle("active");
+  document.querySelector(".shopping-cart").classList.remove("active");
+  document.querySelector(".login-form").classList.remove("active");
+  document.querySelector(".search-container").classList.remove("active");
 });
 
 window.addEventListener("scroll", () => {
@@ -29,16 +32,30 @@ document.querySelector("#cart-btn").addEventListener("click", () => {
   document.querySelector(".shopping-cart").classList.toggle("active");
   document.querySelector(".login-form").classList.remove("active");
   document.querySelector(".search-container").classList.remove("active");
+  menu_btn.classList.remove("fa-times");
+  navbar.classList.remove("active");
 });
 
 document.querySelector("#login-btn").addEventListener("click", () => {
   document.querySelector(".login-form").classList.toggle("active");
   document.querySelector(".shopping-cart").classList.remove("active");
   document.querySelector(".search-container").classList.remove("active");
+  menu_btn.classList.remove("fa-times");
+  navbar.classList.remove("active");
 });
 
 document.querySelector("#search-btn").addEventListener("click", () => {
   document.querySelector(".search-container").classList.toggle("active");
   document.querySelector(".shopping-cart").classList.remove("active");
   document.querySelector(".login-form").classList.remove("active");
+  menu_btn.classList.remove("fa-times");
+  navbar.classList.remove("active");
+});
+
+navbar.querySelectorAll("a").forEach((anchor) => {
+  anchor.addEventListener("click", () => {
+    document.querySelector(".shopping-cart").classList.remove("active");
+    document.querySelector(".login-form").classList.remove("active");
+    document.querySelector(".search-container").classList.remove("active");
+  });
 });
