@@ -276,7 +276,6 @@ section {
     border-radius: $border-radius;
     padding: 2rem;
     animation: fadeUp 0.4s linear;
-
     h3 {
       font-size: 2.5rem;
       text-transform: capitalize;
@@ -293,6 +292,7 @@ section {
       color: $black;
       font-size: 1.6rem;
     }
+
     .remember {
       @include flexProps(baseline, center, nowrap);
       gap: 1rem;
@@ -318,6 +318,13 @@ section {
           color: $black;
         }
       }
+    }
+  }
+  input[type="submit"] {
+    background: $green;
+    color: $white;
+    &:hover {
+      background: $black;
     }
   }
 }

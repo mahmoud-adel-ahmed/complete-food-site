@@ -309,6 +309,13 @@ section {
   text-decoration: underline;
   color: #130f40;
 }
+.login-form input[type=submit] {
+  background: #27ae60;
+  color: #fff;
+}
+.login-form input[type=submit]:hover {
+  background: #130f40;
+}
 
 .search-container form {
   display: flex;
