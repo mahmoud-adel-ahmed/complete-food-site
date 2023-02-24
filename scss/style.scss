@@ -13,6 +13,11 @@
   transition: 0.2s linear;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 $green: #27ae60;
 $black: #130f40;
 $white: #fff;
@@ -24,7 +29,7 @@ $border-radius: 0.5rem;
 
 @mixin gridProps($val) {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min($val, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -112,13 +117,14 @@ section {
 
 .header {
   padding: 2rem 9%;
-  @include flexProps(space-between, center, nowrap);
+  @include flexProps(space-between, center, wrap);
   box-shadow: $box-shadow;
   background: $white;
   position: sticky;
   left: 0;
   right: 0;
   top: 0;
+  gap: 0.5rem;
   z-index: 1000;
   .logo {
     font-size: 2.5rem;
@@ -140,6 +146,8 @@ section {
     }
   }
   .icons {
+    @include flexProps(center, center, wrap);
+    gap: 0.5rem;
     div {
       background: $light-bg;
       color: $black;
@@ -181,7 +189,7 @@ section {
       @include gridProps(30rem);
       padding: 1.5rem;
       .box {
-        @include flexProps(baseline, center, wrap);
+        @include flexProps(flex-start, center, wrap);
         background-color: $light-bg;
         padding: 2rem;
         border-radius: $border-radius;
@@ -294,7 +302,7 @@ section {
     }
 
     .remember {
-      @include flexProps(baseline, center, nowrap);
+      @include flexProps(flex-start, center, nowrap);
       gap: 1rem;
       padding: 1rem 0;
       input {
@@ -332,7 +340,7 @@ section {
 .search-container {
   @extend .position-icons;
   form {
-    @include flexProps(baseline, center, nowrap);
+    @include flexProps(flex-start, center, nowrap);
     width: 100%;
     border-bottom: 0.3rem solid $black;
     animation: fadeUp 0.4s linear;
@@ -351,7 +359,7 @@ section {
 }
 
 .home {
-  @include flexProps(baseline, center, wrap-reverse);
+  @include flexProps(flex-start, center, wrap-reverse);
   gap: 2rem;
   position: relative;
   overflow: hidden;
@@ -419,7 +427,7 @@ section {
 }
 
 .about {
-  @include flexProps(baseline, center, wrap);
+  @include flexProps(flex-start, center, wrap);
   gap: 2rem;
   background: $light-bg;
   .content {
@@ -439,12 +447,12 @@ section {
       padding: 1rem 0;
     }
     .box-container {
-      @include flexProps(baseline, baseline, wrap);
+      @include flexProps(flex-start, baseline, wrap);
       gap: 2rem;
       margin-top: 2rem;
       .box {
         flex: 1 1 20rem;
-        @include flexProps(baseline, center, nowrap);
+        @include flexProps(flex-start, center, wrap);
         border-radius: $border-radius;
         background: $white;
         gap: 2rem;
@@ -467,7 +475,7 @@ section {
 
 .popular {
   .box-container {
-    @include gridProps(25rem);
+    @include gridProps(27rem);
     .box {
       background-color: $light-bg;
       padding: 2rem;
@@ -475,8 +483,12 @@ section {
       text-align: center;
       box-shadow: $box-shadow;
       margin-bottom: 1rem;
+      @include flexProps(center, center, wrap);
+      gap: 0.5rem;
+      flex-direction: column;
       .heart {
-        @include flexProps(flex-end, baseline, nowrap);
+        // @include flexProps(flex-end, baseline, nowrap);
+        align-self: flex-end;
         font-size: 2.5rem;
         color: $black;
         &:hover {
@@ -486,7 +498,8 @@ section {
       .img {
         margin: 1rem 0;
         img {
-          height: 15rem;
+          height: 11rem;
+          max-height: 15rem;
         }
       }
       .content {
@@ -528,11 +541,13 @@ section {
 .banner {
   .full-banner {
     background: url(../images/row-banner.png) center/cover no-repeat;
-    height: 45rem;
-    @include flexProps(baseline, center, nowrap);
+    height: 35rem;
+    max-height: 40rem;
+    @include flexProps(flex-start, center, wrap);
     border-radius: $border-radius;
+    // margin-bottom: 0.5rem;
     .content {
-      padding: 7rem;
+      padding: 7rem 2rem;
       span {
         @include font();
         color: $black;
@@ -551,7 +566,8 @@ section {
   .grid-banner {
     @include gridProps(30rem);
     .grid {
-      height: 45rem;
+      height: 35rem;
+      max-height: 40rem;
       position: relative;
       border-radius: $border-radius;
       overflow: hidden;
@@ -600,7 +616,7 @@ section {
   .box-container {
     @include gridProps(30rem);
     .box {
-      @include flexProps(baseline, center, nowrap);
+      @include flexProps(flex-start, center, nowrap);
       gap: 2rem;
       border-radius: $border-radius;
       padding: 2rem;
@@ -730,6 +746,8 @@ section {
         padding: 2rem 1.5rem;
         .tags {
           padding: 1rem 0;
+          @include flexProps(flex-start, center, wrap);
+          gap: 1rem;
           a {
             font-size: 1.7rem;
             padding-right: 0.5rem;
@@ -821,10 +839,12 @@ section {
         padding: 1rem 0;
       }
       a {
-        display: block;
+        // display: block;
         font-size: 1.5rem;
         color: $light-color;
         padding: 1rem 0;
+        @include flexProps(flex-start, center, wrap);
+        gap: 1rem;
         .fas {
           margin-right: 1rem;
           color: $green;
@@ -842,7 +862,9 @@ section {
     padding-top: 1rem;
     .share {
       text-align: center;
-      margin: 1.5rem 0;
+      margin: 1rem 0;
+      @include flexProps(center, center, wrap);
+      gap: 1rem;
       a {
         height: 4.5rem;
         width: 4.5rem;
@@ -883,6 +905,10 @@ section {
 }
 
 @media screen and (max-width: 768px) {
+  html {
+    font-size: 55%;
+  }
+
   .header {
     .navbar {
       position: absolute;
@@ -923,6 +949,16 @@ section {
     }
   }
 
+  .about {
+    .content {
+      .box-container {
+        .box {
+          @include flexProps(flex-start, center, wrap);
+        }
+      }
+    }
+  }
+
   .order {
     form {
       padding: 1rem;
@@ -933,5 +969,51 @@ section {
 @media (max-width: 450px) {
   html {
     font-size: 50%;
+  }
+  header {
+    .icons {
+      max-width: 100%;
+      margin-left: auto;
+    }
+  }
+
+  .about {
+    .content {
+      .box-container {
+        .box {
+          @include flexProps(center, center, wrap);
+        }
+      }
+    }
+  }
+
+  .menu {
+    .box-container {
+      .box {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+        .img {
+          text-align: center;
+        }
+        .content {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .footer {
+    .box-container {
+      .box {
+        h3 {
+          text-align: center;
+        }
+        a {
+          @include flexProps(center, center, wrap);
+        }
+      }
+    }
   }
 }

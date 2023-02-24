@@ -1,0 +1,20 @@
+{
+  "name": "complete-food-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build:scss": "sass scss/style.scss:css/style.css -w --no-source-map --style=compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahmoud-adel-ahmed/complete-food-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahmoud-adel-ahmed/complete-food-site/issues"
+  },
+  "homepage": "https://github.com/mahmoud-adel-ahmed/complete-food-site#readme"
+}
