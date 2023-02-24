@@ -844,9 +844,9 @@ section {
         color: $light-color;
         padding: 1rem 0;
         @include flexProps(flex-start, center, wrap);
-        gap: 1rem;
+        gap: 0.5rem;
         .fas {
-          margin-right: 1rem;
+          margin-right: 0.7rem;
           color: $green;
         }
         &:hover {
@@ -968,7 +968,7 @@ section {
 
 @media (max-width: 450px) {
   html {
-    font-size: 50%;
+    font-size: 45%;
   }
   header {
     .icons {
@@ -1012,6 +1012,17 @@ section {
         }
         a {
           @include flexProps(center, center, wrap);
+        }
+
+        p {
+          text-align: center;
+        }
+      }
+    }
+    .bottom {
+      .credit {
+        p {
+          font-size: 1.7rem;
         }
       }
     }
